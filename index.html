@@ -54,10 +54,16 @@
                 return 2
             }
         }
+
+        if (playerSelection !== 'Rock' || 'Paper' || 'Scissors'){
+            return 3
+        }
     }
 
     function game(){
-        alert('Let\'s play Rock Paper Scissors against the MACHINE! Good Luck!')
+        alert('Let\'s play Rock Paper Scissors against the MACHINE!')
+        let name = prompt('First of all, put your name for us to know who to thank (or blame) later.')
+        alert(`Ok, ${name}. Let's begin. Good luck!`)
         let playerCount = 0;
         let computerCount = 0;
         for (let i = 0; i < 5; i++){
@@ -66,19 +72,22 @@
             const computerSelection = computerPlay();
             let result = playRound(playerSelection, computerSelection);
             if (result === 0){
-                alert(`That's a Tie! [You] ${playerSelection} -VS- ${computerSelection} [The MACHINE]`)
-                console.log(`That's a Tie! [You] ${playerSelection} -VS- ${computerSelection} [The MACHINE]`)
+                alert(`That's a Tie! [${name}] ${playerSelection} -VS- ${computerSelection} [The MACHINE]`)
+                console.log(`That's a Tie! [${name}] ${playerSelection} -VS- ${computerSelection} [The MACHINE]`)
             } else if (result === 1){
-                alert(`You WIN! [You] **${playerSelection}** -VS- ${computerSelection} [The MACHINE]`)
-                console.log(`You WIN! [You] **${playerSelection}** -VS- ${computerSelection} [The MACHINE]`)
+                alert(`You WIN! [${name}] **${playerSelection}** -VS- ${computerSelection} [The MACHINE]`)
+                console.log(`You WIN! [${name}] **${playerSelection}** -VS- ${computerSelection} [The MACHINE]`)
                 playerCount += 1;
             } else if (result === 2){
-                alert(`You LOSE! [You] ${playerSelection} -VS- **${computerSelection}** [The MACHINE]`)
-                console.log(`You LOSE! [You] ${playerSelection} -VS- **${computerSelection}** [The MACHINE]`)
+                alert(`You LOSE! [${name}] ${playerSelection} -VS- **${computerSelection}** [The MACHINE]`)
+                console.log(`You LOSE! [${name}] ${playerSelection} -VS- **${computerSelection}** [The MACHINE]`)
+                computerCount += 1;
+            } else{
+                alert(`Misspell! You wrote **${playerSelection}**. The MACHINE doesn't forgive dumbness. Point to the MACHINE.`)
                 computerCount += 1;
             }
 
-        alert(`You ${playerCount} x ${computerCount} the MACHINE`)
+        alert(`${name} ${playerCount} x ${computerCount} the MACHINE`)
 
         }
 
@@ -88,14 +97,14 @@
         alert(`You made ${playerCount} point(s). The MACHINE made ${computerCount} point(s)`)
 
         if (playerCount > computerCount){
-            alert('You WON the whole thing! Congratulations!')
-            console.log('You WON the whole thing! Congratulations!');
+            alert(`${name}, you WON the whole thing! Congratulations! Now let's have a beer (or juice)!`)
+            console.log(`${name}, you WON the whole thing! Congratulations! Now let's have a beer (or juice)!`);
         } else if (playerCount < computerCount){
-            alert('You LOST the whole thing! Better luck next time.')
-            console.log('You LOST the whole thing! Better luck next time.')
+            alert(`${name}, you LOST the whole thing! Better luck next time.`)
+            console.log(`${name}, you LOST the whole thing! Better luck next time.`)
         } else{
-            alert('You and the Machine have TIED. Now it\'s time for punches. Get your gloves!')
-            console.log('You and the Machine have TIED. Now it\'s time for punches. Get your gloves!')
+            alert(`${name}, you and the Machine have TIED. Now it\'s time for punches. Get your gloves!`)
+            console.log(`${name}, you and the Machine have TIED. Now it\'s time for punches. Get your gloves!`)
         }
     }
     
