@@ -4,16 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <label for="input">Challenger's Name: </label><input id="challenger" type="text" required>
-    <button id="btn">Confirm</button>
-    <br><br>
-    <div id="container">
-        <button id="1">Rock</button>
-        <button id="2">Paper</button>
-        <button id="3">Scissors</button>
+    <div id="innerBody">
+        <div id="btnContainer">
+            <label for="input">Challenger's Name: </label><input id="challenger" type="text" placeholder="Put your name here first">
+            <button id="btn" onclick="getName()">Confirm</button>
+        </div>
+        <div>
+            <div id="4" class="rpsc">Rock</div>
+            <div id="5" class="rpsc">Paper</div>
+            <div id="6" class="rpsc">Scissors</div>
+        </div>
+        <div>
+            <button id="0" class="rps">Rock</button>
+            <button id="1" class="rps">Paper</button>
+            <button id="2" class="rps">Scissors</button>
+        </div>
+        <div id="container">
+        </div>
     </div>
 </body>
 <script src="rps.js"></script>

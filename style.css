@@ -1,0 +1,77 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    margin: auto;
+    text-align: center;
+    background-color:slateblue;
+}
+
+#innerBody{
+    background-color:lightgreen ;
+    margin: 0px 300px;
+    height: 100vh;
+    border-left: 15px double black;
+    border-right: 15px double black;
+}
+
+#btnContainer{
+    padding: 30px;
+}
+
+#challenger{
+    height: 30px;
+    border-radius: 5px;
+    padding-left: 3px;
+}
+
+#btn{
+    height: 35px;
+    width: 90px;
+    border-radius: 10px;
+}
+
+.rps{
+    width: 100px;
+    height: 170px;
+    background-color: aqua;
+    color: red;
+    margin: 30px;
+    font-weight: bold;
+    box-shadow: 2px 2px 8px black;
+    border: 5px solid red;
+    border-radius: 55px;
+    display: inline-block;
+    
+}
+
+.rpsc{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    color: aqua;
+    margin: 30px;
+    font-weight: bold;
+    box-shadow: 2px 2px 8px black;
+    border: 5px solid purple;
+    border-radius: 0px 0px 0px 235px;
+    display: inline-block;
+    padding-top: 40px;
+}
+
+.rps:hover{
+    background-color: rgb(0, 197, 197);
+    box-shadow: 0px 0px 15px 5px rgb(0, 0, 0);
+    transform: scale(1.2);
+    transition: all 0.2s ease;
+}
+
+.rps:active{
+    border: 5px solid yellow;
+}
+
+#container{
+    margin: 30px;
+}
