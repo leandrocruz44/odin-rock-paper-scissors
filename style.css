@@ -1,3 +1,18 @@
+@font-face {
+    font-family: machine;
+    src: url(ka1.ttf);
+  }
+
+  @font-face {
+    font-family: human;
+    src: url(Rainbow\ Paper.woff2);
+  }
+
+  @font-face {
+    font-family: title;
+    src: url(Open\ 24\ Display\ St.ttf);
+  }
+
 *{
     margin: 0px;
     padding: 0px;
@@ -11,58 +26,78 @@ body{
 
 #innerBody{
     background-color:lightgreen ;
-    margin: 0px 300px;
+    margin: 0px 20vw;
     height: 100vh;
     border-left: 15px double black;
     border-right: 15px double black;
 }
 
+#title{
+    font-family: 'title';
+    font-size: 3vw;
+}
+
 #btnContainer{
-    padding: 30px;
+    padding: 40px;
 }
 
 #challenger{
-    height: 30px;
+    width: 15vw;
+    height: 3vw;
+    font-size: 1vw;
     border-radius: 5px;
     padding-left: 3px;
+    text-align: center;
 }
 
 #btn{
-    height: 35px;
-    width: 90px;
+    width: 5vw;
+    height: 3vw;
+    font-size: 1vw;
+    font-weight: bolder;
     border-radius: 10px;
+    color: white;
+    background-image: linear-gradient(90deg, orange, blue, green, red, aqua);
+}
+
+#choices{
+    height: 20vh;
 }
 
 .rps{
-    width: 100px;
-    height: 170px;
-    background-color: aqua;
-    color: red;
-    margin: 30px;
-    font-weight: bold;
+    width: 10vw;
+    height: 8vw;
+    background-color: rgb(15, 185, 0);
+    color: white;
+    margin: 1vw 3vw;
+    font-size: 2.5vw;
     box-shadow: 2px 2px 8px black;
-    border: 5px solid red;
-    border-radius: 55px;
+    border: 0.3vw solid rgb(255, 255, 255);
+    border-radius: 20px;
     display: inline-block;
+    font-family: 'human';
     
 }
 
+#opponent{
+    height: 20vh;
+}
+
 .rpsc{
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    color: aqua;
-    margin: 30px;
-    font-weight: bold;
+    width: 10vw;
+    height: 8vw;
+    background-color: white;
+    color: black;
+    margin: 1vw 3vw;
+    font-size:1.2vw;
     box-shadow: 2px 2px 8px black;
-    border: 5px solid purple;
-    border-radius: 0px 0px 0px 235px;
-    display: inline-block;
-    padding-top: 40px;
+    border: 0.3vw solid black;
+    border-radius: 20px;
+    font-family: 'machine';
 }
 
 .rps:hover{
-    background-color: rgb(0, 197, 197);
+    background-color: rgb(10, 119, 0);
     box-shadow: 0px 0px 15px 5px rgb(0, 0, 0);
     transform: scale(1.2);
     transition: all 0.2s ease;
@@ -74,4 +109,5 @@ body{
 
 #container{
     margin: 30px;
+    height: 5vw;
 }

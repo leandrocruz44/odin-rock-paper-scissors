@@ -1,8 +1,10 @@
 function getName() {
+    let placeholder = document.querySelector('#challenger')
     let name = document.getElementById('challenger').value;
     document.getElementById('btn').disabled = true;
     if (name == '') {
-        name = 'Mysterious Person';
+        name = 'Nameless Person';
+        placeholder.textContent = 'Ok then...'
         play(name);
     } else {
         play(name);
@@ -21,16 +23,31 @@ function computerPlay() {
     }
 }
 
+function computerPlayMove(choice) {
+    let boxFour = document.getElementById('4');
+    let boxFive = document.getElementById('5');
+    let boxSix = document.getElementById('6');
+    boxFour.style.cssText = 'transition: background-color 0.2s linear; background-color: white'
+    boxFive.style.cssText = 'transition: background-color 0.2s linear; background-color: white'
+    boxSix.style.cssText = 'transition: background-color 0.2s linear; background-color: white'
+    if (choice == 'Rock') {
+        boxFour.style.cssText = 'background-color: red; transform: scale(1.2); transition: background-color: white all .07s ease;';
+    } else if (choice == 'Paper') {
+        boxFive.style.cssText = 'background-color: red; transform: scale(1.2); transition: all .07s ease;';
+    } else if (choice == 'Scissors') {
+        boxSix.style.cssText = 'background-color: red; transform: scale(1.2); transition: all .07s ease;';
+    }
+}
+
 const container = document.querySelector('#container');
 
 function play(name) {
     let playerScore = 0;
     let computerScore = 0;
     let score = document.createElement('p');
-    score.textContent = `${name} -- ${playerScore} x ${computerScore} -- The MACHINE`
+    score.innerText = `Come on, ${name}! We're gonna defeat The MACHINE! Choose your weapon now!`
     container.append(score)
     let roundResult = document.createElement('p');
-    roundResult.textContent = `Hey ${name}, let's win this thing!`
     container.append(roundResult)
     const buttons = document.querySelectorAll('.rps');
     buttons.forEach((button) => {
@@ -39,47 +56,50 @@ function play(name) {
                 if (button.id == 0) {
                     const playerChoice = 'Rock';
                     const computerChoice = computerPlay();
+                    computerPlayMove(computerChoice);
                     if (playRound(playerChoice, computerChoice) == 0) {
                         displayScore(score, playerScore, computerScore, name);
-                        roundResult.textContent = `TIE - ${name} -- [[${playerChoice}]] x [[${computerChoice}]] -- The MACHINE`;
+                        roundResult.textContent = `${playerChoice} ties ${computerChoice}`;
                     } else if (playRound(playerChoice, computerChoice) == 1) {
                         ++playerScore
                         displayScore(score, playerScore, computerScore, name)
-                        roundResult.textContent = `YOU WON - ${name} -- [[${playerChoice}]] x [[${computerChoice}]] -- The MACHINE`;
+                        roundResult.textContent = `${playerChoice} beats ${computerChoice}`;
                     } else if (playRound(playerChoice, computerChoice) == 2) {
                         ++computerScore
                         displayScore(score, playerScore, computerScore, name);
-                        roundResult.textContent = `YOU LOSE - ${name} -- [[${playerChoice}]] x [[${computerChoice}]] -- The MACHINE`;
+                        roundResult.textContent = `${playerChoice} gets beaten by ${computerChoice}`;
                     }
                 } else if (button.id == 1) {
                     const playerChoice = 'Paper';
                     const computerChoice = computerPlay();
+                    computerPlayMove(computerChoice);
                     if (playRound(playerChoice, computerChoice) == 0) {
                         displayScore(score, playerScore, computerScore, name);
-                        roundResult.textContent = `TIE - ${name} -- [[${playerChoice}]] x [[${computerChoice}]] -- The MACHINE`;
+                        roundResult.textContent = `${playerChoice} ties ${computerChoice}`;
                     } else if (playRound(playerChoice, computerChoice) == 1) {
                         ++playerScore
                         displayScore(score, playerScore, computerScore, name);
-                        roundResult.textContent = `YOU WON - ${name} -- [[${playerChoice}]] x [[${computerChoice}]] -- The MACHINE`;
+                        roundResult.textContent = `${playerChoice} beats ${computerChoice}`;
                     } else if (playRound(playerChoice, computerChoice) == 2) {
                         ++computerScore
                         displayScore(score, playerScore, computerScore, name);
-                        roundResult.textContent = `YOU LOSE - ${name} -- [[${playerChoice}]] x [[${computerChoice}]] -- The MACHINE`;
+                        roundResult.textContent = `${playerChoice} gets beaten by ${computerChoice}`;
                     }
                 } else {
                     const playerChoice = 'Scissors';
                     const computerChoice = computerPlay();
+                    computerPlayMove(computerChoice);
                     if (playRound(playerChoice, computerChoice) == 0) {
                         displayScore(score, playerScore, computerScore, name);
-                        roundResult.textContent = `TIE - ${name} -- [[${playerChoice}]] x [[${computerChoice}]] -- The MACHINE`;
+                        roundResult.textContent = `${playerChoice} ties ${computerChoice}`;
                     } else if (playRound(playerChoice, computerChoice) == 1) {
                         ++playerScore
                         displayScore(score, playerScore, computerScore, name);
-                        roundResult.textContent = `YOU WON - ${name} -- [[${playerChoice}]] x [[${computerChoice}]] -- The MACHINE`;
+                        roundResult.textContent = `${playerChoice} beats ${computerChoice}`;
                     } else if (playRound(playerChoice, computerChoice) == 2) {
                         ++computerScore
                         displayScore(score, playerScore, computerScore, name);
-                        roundResult.textContent = `YOU LOSE - ${name} -- [[${playerChoice}]] x [[${computerChoice}]] -- The MACHINE`;
+                        roundResult.textContent = `${playerChoice} gets beaten by ${computerChoice}`;
                     }
                 }
             }
@@ -113,15 +133,23 @@ function endResult(playerScore, computerScore) {
     let keepPlaying = true;
     container.append(endResult);
     if (playerScore == 5) {
-        endResult.textContent = 'YOU WON the match';
-        keepPlaying = false
         disableButton();
+        endResult.textContent = 'YOU WON the match! CONGRATULATIONS!';
+        keepPlaying = false
     } else if (computerScore == 5) {
-        endResult.textContent = 'You LOST the match';
-        keepPlaying = false
         disableButton();
+        endResult.textContent = 'You LOST the match... Better luck next time.';
+        keepPlaying = false
     } 
     return keepPlaying;
+}
+
+function playAgain() {
+    let playAgain = document.createElement('button');
+    container.append(playAgain);
+    playAgain.addEventListener('click', () => {
+        window.location.reload()
+    })
 }
 
 function disableButton() {
