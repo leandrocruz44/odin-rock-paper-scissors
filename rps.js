@@ -25,11 +25,11 @@ function computerPlayMove(choice) {
     let boxFour = document.getElementById('4');
     let boxFive = document.getElementById('5');
     let boxSix = document.getElementById('6');
-    boxFour.style.cssText = 'transition: background-color 0.2s linear; background-color: white'
-    boxFive.style.cssText = 'transition: background-color 0.2s linear; background-color: white'
-    boxSix.style.cssText = 'transition: background-color 0.2s linear; background-color: white'
+    boxFour.style.cssText = 'transition: background-color 0.2s linear; background-color: rgb(255, 255, 125)'
+    boxFive.style.cssText = 'transition: background-color 0.2s linear; background-color: rgb(255, 255, 125)'
+    boxSix.style.cssText = 'transition: background-color 0.2s linear; background-color: rgb(255, 255, 125)'
     if (choice == 'Rock') {
-        boxFour.style.cssText = 'background-color: red; transform: scale(1.2); transition: background-color: white all .07s ease;';
+        boxFour.style.cssText = 'background-color: red; transform: scale(1.2); transition: all .07s ease;';
     } else if (choice == 'Paper') {
         boxFive.style.cssText = 'background-color: red; transform: scale(1.2); transition: all .07s ease;';
     } else if (choice == 'Scissors') {
