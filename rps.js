@@ -1,10 +1,8 @@
 function getName() {
-    let placeholder = document.querySelector('#challenger')
     let name = document.getElementById('challenger').value;
     document.getElementById('btn').disabled = true;
     if (name == '') {
         name = 'Nameless Person';
-        placeholder.textContent = 'Ok then...'
         play(name);
     } else {
         play(name);
