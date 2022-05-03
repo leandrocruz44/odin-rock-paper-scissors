@@ -57,15 +57,16 @@ function play(name) {
                     computerPlayMove(computerChoice);
                     if (playRound(playerChoice, computerChoice) == 0) {
                         displayScore(score, playerScore, computerScore, name);
-                        roundResult.textContent = `${playerChoice} ties ${computerChoice}`;
+                        roundResult.textContent = `${playerChoice} ties ${computerChoice}
+                        `;
                     } else if (playRound(playerChoice, computerChoice) == 1) {
                         ++playerScore
                         displayScore(score, playerScore, computerScore, name)
-                        roundResult.textContent = `${playerChoice} beats ${computerChoice}`;
+                        roundResult.textContent = `✔ ${playerChoice} beats ${computerChoice}`;
                     } else if (playRound(playerChoice, computerChoice) == 2) {
                         ++computerScore
                         displayScore(score, playerScore, computerScore, name);
-                        roundResult.textContent = `${playerChoice} gets beaten by ${computerChoice}`;
+                        roundResult.textContent = `${playerChoice} gets beaten by ${computerChoice} ✔`;
                     }
                 } else if (button.id == 1) {
                     const playerChoice = 'Paper';
@@ -77,11 +78,11 @@ function play(name) {
                     } else if (playRound(playerChoice, computerChoice) == 1) {
                         ++playerScore
                         displayScore(score, playerScore, computerScore, name);
-                        roundResult.textContent = `${playerChoice} beats ${computerChoice}`;
+                        roundResult.textContent = `✔ ${playerChoice} beats ${computerChoice}`;
                     } else if (playRound(playerChoice, computerChoice) == 2) {
                         ++computerScore
                         displayScore(score, playerScore, computerScore, name);
-                        roundResult.textContent = `${playerChoice} gets beaten by ${computerChoice}`;
+                        roundResult.textContent = `${playerChoice} gets beaten by ${computerChoice} ✔`;
                     }
                 } else {
                     const playerChoice = 'Scissors';
@@ -93,11 +94,11 @@ function play(name) {
                     } else if (playRound(playerChoice, computerChoice) == 1) {
                         ++playerScore
                         displayScore(score, playerScore, computerScore, name);
-                        roundResult.textContent = `${playerChoice} beats ${computerChoice}`;
+                        roundResult.textContent = `✔ ${playerChoice} beats ${computerChoice}`;
                     } else if (playRound(playerChoice, computerChoice) == 2) {
                         ++computerScore
                         displayScore(score, playerScore, computerScore, name);
-                        roundResult.textContent = `${playerChoice} gets beaten by ${computerChoice}`;
+                        roundResult.textContent = `${playerChoice} gets beaten by ${computerChoice} ✔`;
                     }
                 }
             }
@@ -128,22 +129,30 @@ function playRound(playerSelection, computerSelection) {
 
 function endResult(playerScore, computerScore) {
     let endResult = document.createElement('h3');
+    
     let keepPlaying = true;
     container.append(endResult);
     if (playerScore == 5) {
         disableButton();
         endResult.textContent = 'YOU WON the match! CONGRATULATIONS!';
+        winResult()
         keepPlaying = false
+        playAgain()
     } else if (computerScore == 5) {
         disableButton();
         endResult.textContent = 'You LOST the match... Better luck next time.';
+        loseResult()
         keepPlaying = false
+        playAgain()
     } 
     return keepPlaying;
 }
 
 function playAgain() {
     let playAgain = document.createElement('button');
+    playAgain.textContent = '↻'
+    playAgain.setAttribute('id', 'again')
+    playAgain.classList.toggle('play')
     container.append(playAgain);
     playAgain.addEventListener('click', () => {
         window.location.reload()
@@ -154,5 +163,27 @@ function disableButton() {
     const buttons = document.querySelectorAll('.rps');
     buttons.forEach((button) =>{
         button.disabled = true;
+    })
+}
+
+function winResult() {
+    let imageResult = document.querySelectorAll('.rps')
+    imageResult.forEach((image) => {
+        image.innerHTML = '🏆'
+    })
+    let imageResult2 = document.querySelectorAll('.rpsc')
+    imageResult2.forEach((image) => {
+        image.innerHTML = '💣'
+    })
+}
+
+function loseResult() {
+    let imageResult = document.querySelectorAll('.rps')
+    imageResult.forEach((image) => {
+        image.innerHTML = '💣'
+    })
+    let imageResult2 = document.querySelectorAll('.rpsc')
+    imageResult2.forEach((image) => {
+        image.innerHTML = '🏆'
     })
 }
